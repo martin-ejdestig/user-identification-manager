@@ -9,5 +9,5 @@ We are happy to accept contributions. To accept a contribution we require:
 We aim to follow the [GNOME guidelines](https://wiki.gnome.org/Git/CommitMessages) for commit
 messages.
 
-The Pelagicore Template D-Bus Service is open source software, see the LICENSE file to understand
+The Pelagicore User Identification Manager is open source software, see the LICENSE file to understand
 what license we use and what this means.

@@ -3,7 +3,7 @@ daemon_deps = [
     giomm_dep,
     glib_dep,
     glibmm_dep,
-    tdbs_dbus_dep
+    uim_dbus_dep
 ]
 
 daemon_sources = [
@@ -20,7 +20,7 @@ daemon_main_sources = [
     daemon_sources
 ]
 
-daemon_exe = executable('template-dbus-service',
+daemon_exe = executable('user-identification-manager',
     dependencies : daemon_deps,
     include_directories : private_include_dir,
     sources : daemon_main_sources,

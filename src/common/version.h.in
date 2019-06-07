@@ -6,12 +6,12 @@
 //
 // SPDX-License-Identifier: MPL-2.0
 
-#ifndef TEMPLATE_DBUS_SERVICE_COMMON_VERSION_H
-#define TEMPLATE_DBUS_SERVICE_COMMON_VERSION_H
+#ifndef USER_IDENTIFICATION_MANAGER_COMMON_VERSION_H
+#define USER_IDENTIFICATION_MANAGER_COMMON_VERSION_H
 
-namespace TemplateDBusService::Common
+namespace UserIdentificationManager::Common
 {
     static constexpr char VERSION[] = "@VCS_TAG@";
 }
 
-#endif // TEMPLATE_DBUS_SERVICE_COMMON_VERSION_H
+#endif // USER_IDENTIFICATION_MANAGER_COMMON_VERSION_H

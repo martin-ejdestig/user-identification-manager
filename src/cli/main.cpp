@@ -15,16 +15,12 @@
 
 #include "common/dbus.h"
 #include "common/version.h"
-#include "generated/dbus/template_proxy.h"
-
-// Just a simple example of how to create a proxy and call a method in the service and shows use of
-// libcommon.a. Note that *_sync() versions of the proxy methods are used below. This should only be
-// done if it is OK to block for a very long time. Usually that is the case in a cli application.
+#include "generated/dbus/user_identification_manager_proxy.h"
 
 namespace
 {
-    // using Arguments = TemplateDBusService::Cli::Arguments;
-    using Proxy = com::luxoft::TemplateProxy;
+    // using Arguments = UserIdentificationManager::Cli::Arguments;
+    using ManagerProxy = com::luxoft::UserIdentificationManagerProxy;
 }
 
 int main(int /*argc*/, char * /*argv*/ [])
@@ -40,22 +36,22 @@ int main(int /*argc*/, char * /*argv*/ [])
     //     return EXIT_FAILURE;
     //
     // if (arguments->print_version_and_exit) {
-    //     std::cout << Glib::get_prgname() << " " << TemplateDBusService::Common::VERSION << '\n';
+    //     std::cout << Glib::get_prgname() << " " << UserIdentificationManager::Common::VERSION << '\n';
     //     return EXIT_SUCCESS;
     // }
 
-    Glib::RefPtr<Proxy> proxy =
-        Proxy::createForBus_sync(Gio::DBus::BUS_TYPE_SYSTEM,
-                                 Gio::DBus::PROXY_FLAGS_NONE,
-                                 TemplateDBusService::Common::DBus::TEMPLATE_SERVICE_NAME,
-                                 TemplateDBusService::Common::DBus::TEMPLATE_OBJECT_PATH);
+    Glib::RefPtr<ManagerProxy> manager_proxy = ManagerProxy::createForBus_sync(
+        Gio::DBus::BUS_TYPE_SYSTEM,
+        Gio::DBus::PROXY_FLAGS_NONE,
+        UserIdentificationManager::Common::DBus::MANAGER_SERVICE_NAME,
+        UserIdentificationManager::Common::DBus::MANAGER_OBJECT_PATH);
 
-    if (proxy->dbusProxy()->get_name_owner().empty()) {
+    if (manager_proxy->dbusProxy()->get_name_owner().empty()) {
         std::cout << "Service not available, quitting.\n";
         return EXIT_FAILURE;
     }
 
-    std::cout << "Service method returned: " << proxy->RemoveMeFoo_sync(123) << '\n';
+    // TODO
 
     return EXIT_SUCCESS;
 }

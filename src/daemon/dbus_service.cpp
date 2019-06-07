@@ -13,7 +13,7 @@
 
 #include "common/dbus.h"
 
-namespace TemplateDBusService::Daemon
+namespace UserIdentificationManager::Daemon
 {
     DBusService::DBusService(const Glib::RefPtr<Glib::MainLoop> &main_loop) : main_loop_(main_loop)
     {
@@ -30,7 +30,7 @@ namespace TemplateDBusService::Daemon
             return;
 
         connection_id_ = Gio::DBus::own_name(Gio::DBus::BUS_TYPE_SYSTEM,
-                                             Common::DBus::TEMPLATE_SERVICE_NAME,
+                                             Common::DBus::MANAGER_SERVICE_NAME,
                                              sigc::mem_fun(*this, &DBusService::bus_acquired),
                                              sigc::mem_fun(*this, &DBusService::name_acquired),
                                              sigc::mem_fun(*this, &DBusService::name_lost));
@@ -48,7 +48,7 @@ namespace TemplateDBusService::Daemon
     void DBusService::bus_acquired(const Glib::RefPtr<Gio::DBus::Connection> &connection,
                                    const Glib::ustring & /*name*/)
     {
-        if (template_.register_object(connection, Common::DBus::TEMPLATE_OBJECT_PATH) == 0)
+        if (manager_.register_object(connection, Common::DBus::MANAGER_OBJECT_PATH) == 0)
             main_loop_->quit();
     }
 
@@ -63,22 +63,5 @@ namespace TemplateDBusService::Daemon
     {
         g_warning("Lost D-Bus name %s, quitting", name.c_str());
         main_loop_->quit();
-    }
-
-    void DBusService::Template::RemoveMeFoo(guint32 number, MethodInvocation &invocation)
-    {
-        bool is_odd = (number % 2) != 0;
-        invocation.ret(is_odd);
-    }
-
-    bool DBusService::Template::RemoveMeBaz_setHandler(bool value)
-    {
-        remove_me_baz_ = value;
-        return true;
-    }
-
-    bool DBusService::Template::RemoveMeBaz_get()
-    {
-        return remove_me_baz_;
     }
 }

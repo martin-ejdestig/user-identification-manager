@@ -1,0 +1,7 @@
+[Unit]
+Description=User Identification Manager
+
+[Service]
+Type=dbus
+BusName=com.luxoft.UserIdentificationManager
+ExecStart=@bindir@/user-identification-manager

@@ -6,17 +6,17 @@
 //
 // SPDX-License-Identifier: MPL-2.0
 
-#ifndef TEMPLATE_DBUS_SERVICE_COMMON_DBUS_H
-#define TEMPLATE_DBUS_SERVICE_COMMON_DBUS_H
+#ifndef USER_IDENTIFICATION_MANAGER_COMMON_DBUS_H
+#define USER_IDENTIFICATION_MANAGER_COMMON_DBUS_H
 
-namespace TemplateDBusService::Common
+namespace UserIdentificationManager::Common
 {
     class DBus
     {
     public:
-        static constexpr char TEMPLATE_SERVICE_NAME[] = "com.luxoft.Template";
-        static constexpr char TEMPLATE_OBJECT_PATH[] = "/com/luxoft/Template";
+        static constexpr char MANAGER_SERVICE_NAME[] = "com.luxoft.UserIdentificationManager";
+        static constexpr char MANAGER_OBJECT_PATH[] = "/com/luxoft/UserIdentificationManager";
     };
 }
 
-#endif // TEMPLATE_DBUS_SERVICE_COMMON_DBUS_H
+#endif // USER_IDENTIFICATION_MANAGER_COMMON_DBUS_H
