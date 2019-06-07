@@ -6,8 +6,8 @@
 //
 // SPDX-License-Identifier: MPL-2.0
 
-#ifndef TEMPLATE_DBUS_SERVICE_DAEMON_DAEMON_H
-#define TEMPLATE_DBUS_SERVICE_DAEMON_DAEMON_H
+#ifndef USER_IDENTIFICATION_MANAGER_DAEMON_DAEMON_H
+#define USER_IDENTIFICATION_MANAGER_DAEMON_DAEMON_H
 
 #include <glibmm.h>
 
@@ -16,7 +16,7 @@
 
 #include "daemon/dbus_service.h"
 
-namespace TemplateDBusService::Daemon
+namespace UserIdentificationManager::Daemon
 {
     class Daemon
     {
@@ -48,4 +48,4 @@ namespace TemplateDBusService::Daemon
     };
 }
 
-#endif // TEMPLATE_DBUS_SERVICE_DAEMON_DAEMON_H
+#endif // USER_IDENTIFICATION_MANAGER_DAEMON_DAEMON_H

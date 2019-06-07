@@ -15,7 +15,7 @@
 #include <string>
 #include <vector>
 
-namespace TemplateDBusService::Daemon
+namespace UserIdentificationManager::Daemon
 {
     namespace
     {

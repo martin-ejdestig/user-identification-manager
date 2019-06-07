@@ -6,13 +6,13 @@
 //
 // SPDX-License-Identifier: MPL-2.0
 
-#ifndef TEMPLATE_DBUS_SERVICE_DAEMON_ARGUMENTS_H
-#define TEMPLATE_DBUS_SERVICE_DAEMON_ARGUMENTS_H
+#ifndef USER_IDENTIFICATION_MANAGER_DAEMON_ARGUMENTS_H
+#define USER_IDENTIFICATION_MANAGER_DAEMON_ARGUMENTS_H
 
 #include <optional>
 #include <ostream>
 
-namespace TemplateDBusService::Daemon
+namespace UserIdentificationManager::Daemon
 {
     struct Arguments
     {
@@ -22,4 +22,4 @@ namespace TemplateDBusService::Daemon
     };
 }
 
-#endif // TEMPLATE_DBUS_SERVICE_DAEMON_ARGUMENTS_H
+#endif // USER_IDENTIFICATION_MANAGER_DAEMON_ARGUMENTS_H

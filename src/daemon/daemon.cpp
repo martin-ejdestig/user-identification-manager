@@ -16,7 +16,7 @@
 #include <csignal>
 #include <cstddef>
 
-namespace TemplateDBusService::Daemon
+namespace UserIdentificationManager::Daemon
 {
     namespace
     {

@@ -15,14 +15,13 @@
 #include <optional>
 
 #include "common/version.h"
-#include "config.h"
 #include "daemon/arguments.h"
 #include "daemon/daemon.h"
 
 namespace
 {
-    using Arguments = TemplateDBusService::Daemon::Arguments;
-    using Daemon = TemplateDBusService::Daemon::Daemon;
+    using Arguments = UserIdentificationManager::Daemon::Arguments;
+    using Daemon = UserIdentificationManager::Daemon::Daemon;
 }
 
 int main(int argc, char *argv[])
@@ -37,13 +36,10 @@ int main(int argc, char *argv[])
         return EXIT_FAILURE;
 
     if (arguments->print_version_and_exit) {
-        std::cout << Glib::get_prgname() << " " << TemplateDBusService::Common::VERSION << '\n';
+        std::cout << Glib::get_prgname() << " " << UserIdentificationManager::Common::VERSION
+                  << '\n';
         return EXIT_SUCCESS;
     }
-
-#ifdef TEMPLATE_DBUS_SERVICE_FOO
-    g_message("Using feature FOO. REMOVE ME!");
-#endif
 
     Daemon daemon;
 

@@ -1,6 +1,6 @@
-# Template D-Bus service
+# User Identification Manager
 
-Template for creating a D-Bus service component.
+D-Bus service for identifying users from external sources in an automotive setting.
 
 # Dependencies
 
