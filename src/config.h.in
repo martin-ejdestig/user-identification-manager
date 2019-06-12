@@ -15,6 +15,8 @@
 
 #define UIM_CONFIG_DAEMON_DEFAULT_CONFIG_FILE "@sysconfdir@/user-identification-manager.conf"
 
+#define UIM_CONFIG_MASS_STORAGE_DEVICE_ID_SOURCE @msd_id_source@
+
 // clang-format on
 
 #endif // USER_IDENTIFICATION_MANAGER_CONFIG_H

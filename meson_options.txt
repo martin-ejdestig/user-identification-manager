@@ -1,1 +1,4 @@
-# TODO
+option('msd_id_source',
+       type : 'boolean',
+       value : true,
+       description : 'Include mass storage device ID source.')

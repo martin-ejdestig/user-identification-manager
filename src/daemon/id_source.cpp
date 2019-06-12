@@ -14,6 +14,7 @@
 #include <utility>
 
 #include "config.h"
+#include "daemon/id_sources/mass_storage_device_id_source.h"
 
 namespace UserIdentificationManager::Daemon
 {
@@ -23,7 +24,9 @@ namespace UserIdentificationManager::Daemon
         {
             IdSource::Group::Sources sources;
 
-            // TODO: Create default sources.
+#if UIM_CONFIG_MASS_STORAGE_DEVICE_ID_SOURCE
+            sources.emplace_back(std::make_unique<MassStorageDeviceIdSource>());
+#endif
 
             return sources;
         }

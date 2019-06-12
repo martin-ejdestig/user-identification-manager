@@ -17,6 +17,8 @@ daemon_sources = [
     'dbus_service.h',
     'id_source.cpp',
     'id_source.h',
+    'id_sources/mass_storage_device_id_source.cpp',
+    'id_sources/mass_storage_device_id_source.h'
 ]
 
 daemon_main_sources = [
