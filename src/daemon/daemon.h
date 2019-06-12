@@ -47,7 +47,7 @@ namespace UserIdentificationManager::Daemon
 
         IdSource::Group id_source_group_;
 
-        DBusService dbus_service_{main_loop_};
+        DBusService dbus_service_{main_loop_, id_source_group_};
     };
 }
 
