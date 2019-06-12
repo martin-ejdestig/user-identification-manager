@@ -13,32 +13,34 @@
 #include <cstdlib>
 #include <iostream>
 
+#include "cli/arguments.h"
+#include "cli/run.h"
 #include "common/dbus.h"
 #include "common/version.h"
 #include "generated/dbus/user_identification_manager_proxy.h"
 
 namespace
 {
-    // using Arguments = UserIdentificationManager::Cli::Arguments;
+    using Arguments = UserIdentificationManager::Cli::Arguments;
     using ManagerProxy = com::luxoft::UserIdentificationManagerProxy;
 }
 
-int main(int /*argc*/, char * /*argv*/ [])
+int main(int argc, char *argv[])
 {
     std::setlocale(LC_ALL, "");
 
     Glib::init();
     Gio::init();
 
-    // Do some argument parsing here. E.g. nice to have a --version for both service and client.
-    // std::optional<Arguments> arguments = Arguments::parse(argc, argv);
-    // if (!arguments)
-    //     return EXIT_FAILURE;
-    //
-    // if (arguments->print_version_and_exit) {
-    //     std::cout << Glib::get_prgname() << " " << UserIdentificationManager::Common::VERSION << '\n';
-    //     return EXIT_SUCCESS;
-    // }
+    std::optional<Arguments> arguments = Arguments::parse(argc, argv, std::cout);
+    if (!arguments)
+        return EXIT_FAILURE;
+
+    if (arguments->print_version_and_exit) {
+        std::cout << Glib::get_prgname() << " " << UserIdentificationManager::Common::VERSION
+                  << '\n';
+        return EXIT_SUCCESS;
+    }
 
     Glib::RefPtr<ManagerProxy> manager_proxy = ManagerProxy::createForBus_sync(
         Gio::DBus::BUS_TYPE_SYSTEM,
@@ -51,7 +53,5 @@ int main(int /*argc*/, char * /*argv*/ [])
         return EXIT_FAILURE;
     }
 
-    // TODO
-
-    return EXIT_SUCCESS;
+    return UserIdentificationManager::Cli::run(manager_proxy, *arguments);
 }
