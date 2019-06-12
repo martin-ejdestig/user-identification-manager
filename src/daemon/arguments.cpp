@@ -25,6 +25,14 @@ namespace UserIdentificationManager::Daemon
             main_group.add_entry(entry, arguments.print_version_and_exit);
         }
 
+        {
+            Glib::OptionEntry entry;
+            entry.set_short_name('c');
+            entry.set_long_name("config");
+            entry.set_description("Configuration file to use, default: " + arguments.config_file);
+            main_group.add_entry_filename(entry, arguments.config_file);
+        }
+
         context.set_main_group(main_group);
 
         try {

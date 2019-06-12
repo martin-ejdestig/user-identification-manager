@@ -16,11 +16,13 @@
 
 #include "common/version.h"
 #include "daemon/arguments.h"
+#include "daemon/configuration.h"
 #include "daemon/daemon.h"
 
 namespace
 {
     using Arguments = UserIdentificationManager::Daemon::Arguments;
+    using Configuration = UserIdentificationManager::Daemon::Configuration;
     using Daemon = UserIdentificationManager::Daemon::Daemon;
 }
 
@@ -41,7 +43,7 @@ int main(int argc, char *argv[])
         return EXIT_SUCCESS;
     }
 
-    Daemon daemon;
+    Daemon daemon(Configuration::from_file(arguments->config_file));
 
     return daemon.run();
 }

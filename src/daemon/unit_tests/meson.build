@@ -5,6 +5,7 @@ daemon_unit_tests_deps = [
 
 daemon_unit_tests_sources = [
     'arguments_test.cpp',
+    'configuration_test.cpp',
     'id_source_test.cpp'
 ]
 

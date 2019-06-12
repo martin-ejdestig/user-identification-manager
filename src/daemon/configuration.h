@@ -6,25 +6,25 @@
 //
 // SPDX-License-Identifier: MPL-2.0
 
-#ifndef USER_IDENTIFICATION_MANAGER_DAEMON_ARGUMENTS_H
-#define USER_IDENTIFICATION_MANAGER_DAEMON_ARGUMENTS_H
+#ifndef USER_IDENTIFICATION_MANAGER_DAEMON_CONFIGURATION_H
+#define USER_IDENTIFICATION_MANAGER_DAEMON_CONFIGURATION_H
 
 #include <optional>
-#include <ostream>
 #include <string>
+#include <vector>
 
 #include "config.h"
 
 namespace UserIdentificationManager::Daemon
 {
-    struct Arguments
+    struct Configuration
     {
-        static std::optional<Arguments> parse(int argc, char *argv[], std::ostream &output);
-
-        bool print_version_and_exit = false;
+        static Configuration from_file(const std::string &file_name);
 
         std::string config_file = UIM_CONFIG_DAEMON_DEFAULT_CONFIG_FILE;
+
+        std::vector<std::string> sources_enable; // Empty means enable all.
     };
 }
 
-#endif // USER_IDENTIFICATION_MANAGER_DAEMON_ARGUMENTS_H
+#endif // USER_IDENTIFICATION_MANAGER_DAEMON_CONFIGURATION_H

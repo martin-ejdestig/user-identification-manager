@@ -7,6 +7,8 @@ version_header = vcs_tag(input : 'version.h.in', output : 'version.h')
 common_sources = [
     'dbus.h',
     'scoped_silent_log_handler.h',
+    'scoped_temp_file.cpp',
+    'scoped_temp_file.h',
     version_header
 ]
 
