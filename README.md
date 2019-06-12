@@ -44,6 +44,26 @@ Content that corresponds to default configuration with comments explaining the v
 enable=
 ```
 
+# Command Line Interface
+
+`uimcli` is a command line tool that can be used to debug and monitor the User Identification
+Manager daemon. Help summary:
+
+```
+$ uimcli -h
+Usage:
+  uimcli [OPTION…]
+
+Help Options:
+  -h, --help                 Show help options
+
+Application Options:
+  --version                  Print version and exit
+  -i, --identified-users     Print users identified since start of daemon (max 20)
+  -s, --sources              Print enabled and disabled identification sources
+  -m, --monitor              Monitor user identification events
+```
+
 # License and Copyright
 
 Copyright © 2019 Luxoft Sweden AB
