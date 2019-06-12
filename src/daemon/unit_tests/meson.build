@@ -4,7 +4,8 @@ daemon_unit_tests_deps = [
 ]
 
 daemon_unit_tests_sources = [
-    'arguments_test.cpp'
+    'arguments_test.cpp',
+    'id_source_test.cpp'
 ]
 
 daemon_unit_tests = executable('daemon-unit_tests',

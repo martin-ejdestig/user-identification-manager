@@ -13,7 +13,7 @@
 // clang-format. No complex formatting in this file anyway.
 // clang-format off
 
-// TODO
+#define UIM_CONFIG_DAEMON_MAX_SAVED_IDENTIFIED_USERS 20
 
 // clang-format on
 

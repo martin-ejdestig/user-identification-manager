@@ -12,7 +12,9 @@ daemon_sources = [
     'daemon.cpp',
     'daemon.h',
     'dbus_service.cpp',
-    'dbus_service.h'
+    'dbus_service.h',
+    'id_source.cpp',
+    'id_source.h',
 ]
 
 daemon_main_sources = [
