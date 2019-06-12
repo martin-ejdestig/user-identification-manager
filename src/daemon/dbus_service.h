@@ -10,7 +10,9 @@
 #define USER_IDENTIFICATION_MANAGER_DAEMON_DBUS_SERVICE_H
 
 #include <glibmm.h>
+#include <sigc++/sigc++.h>
 
+#include "daemon/id_source.h"
 #include "generated/dbus/user_identification_manager_common.h"
 #include "generated/dbus/user_identification_manager_stub.h"
 
@@ -19,7 +21,8 @@ namespace UserIdentificationManager::Daemon
     class DBusService
     {
     public:
-        explicit DBusService(const Glib::RefPtr<Glib::MainLoop> &main_loop);
+        explicit DBusService(const Glib::RefPtr<Glib::MainLoop> &main_loop,
+                             IdSource::Group &id_source_group);
         ~DBusService();
 
         DBusService(const DBusService &other) = delete;
@@ -34,7 +37,19 @@ namespace UserIdentificationManager::Daemon
         class Manager : public com::luxoft::UserIdentificationManagerStub
         {
         public:
-            // TODO
+            explicit Manager(IdSource::Group &id_source_group);
+
+            void start_listening_for_user_identified();
+            void stop_listening_for_user_identified();
+
+        private:
+            void user_identified(const IdSource::IdentifiedUser &identified_user);
+
+            void GetIdentifiedUsers(MethodInvocation &invocation) override;
+            void GetSources(MethodInvocation &invocation) override;
+
+            IdSource::Group &id_source_group_;
+            sigc::connection user_identified_connection_;
         };
 
         void bus_acquired(const Glib::RefPtr<Gio::DBus::Connection> &connection,
