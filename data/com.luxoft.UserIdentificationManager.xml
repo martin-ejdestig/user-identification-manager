@@ -3,5 +3,46 @@
  "http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd">
 <node>
   <interface name="com.luxoft.UserIdentificationManager">
+    <!--
+        UserIdentified:
+
+        Sent when a user has been identified and assigned to a seat.
+
+        Example:
+           user_identification_id = "KEYFOB-01-DE-02-AD"
+           seat_id = 0
+    -->
+    <signal name="UserIdentified">
+      <arg name="user_identification_id" type="s"/>
+      <arg name="seat_id" type="q"/>
+    </signal>
+
+    <!--
+        GetIdentifiedUsers:
+
+        For debugging purposes, returns an array of the (max 20) most recently
+        identified users emitted by UserIdentified. Each element corresponds to
+        user_identification_id and seat_id in UserIdentified.
+
+        Example: { { "KEYFOB-01-DE-02-AD", 0 }, { "MSD-0123456789", 1 } }
+    -->
+    <method name="GetIdentifiedUsers">
+      <arg name="response" type="a(sq)" direction="out"/>
+    </method>
+
+    <!--
+        GetSources:
+
+        For debugging purposes, returns an array of enabled and disabled
+        sources, depending on configuration data.
+
+        Example:
+           enabled = { "KEYFOB", "RFID", "NFC", "MSD" }
+           disabled = { "FACE", "FINGER", "BT" }
+    -->
+    <method name="GetSources">
+      <arg name="enabled" type="as" direction="out"/>
+      <arg name="disabled" type="as" direction="out"/>
+    </method>
   </interface>
 </node>

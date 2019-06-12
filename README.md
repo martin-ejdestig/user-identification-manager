@@ -2,6 +2,9 @@
 
 D-Bus service for identifying users from external sources in an automotive setting.
 
+A D-Bus signal, `UserIdentified`, is emitted when a user is identified. See the
+[D-Bus interface](data/com.luxoft.UserIdentificationManager.xml) for details.
+
 # Dependencies
 
 - gdbus-codgen-glibmm
