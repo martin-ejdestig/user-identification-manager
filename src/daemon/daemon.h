@@ -15,6 +15,7 @@
 #include <string>
 
 #include "daemon/dbus_service.h"
+#include "daemon/id_source.h"
 
 namespace UserIdentificationManager::Daemon
 {
@@ -43,6 +44,8 @@ namespace UserIdentificationManager::Daemon
         guint sigint_source_id_ = 0;
         guint sigterm_source_id_ = 0;
         guint sighup_source_id_ = 0;
+
+        IdSource::Group id_source_group_;
 
         DBusService dbus_service_{main_loop_};
     };

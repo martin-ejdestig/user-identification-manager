@@ -1,11 +1,17 @@
+common_deps = [
+    glib_dep
+]
+
 version_header = vcs_tag(input : 'version.h.in', output : 'version.h')
 
 common_sources = [
     'dbus.h',
+    'scoped_silent_log_handler.h',
     version_header
 ]
 
 common_lib = static_library('common',
+    dependencies : common_deps,
     include_directories : private_include_dir,
     sources : common_sources)
 
