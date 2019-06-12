@@ -6,7 +6,11 @@ cli_deps = [
 ]
 
 cli_sources = [
-    'main.cpp'
+    'arguments.cpp',
+    'arguments.h',
+    'main.cpp',
+    'run.cpp',
+    'run.h'
 ]
 
 executable('uimcli',
