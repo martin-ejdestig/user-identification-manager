@@ -30,6 +30,20 @@ meson test -C build
 
 "No tests defined." is printed if the required version of googletest could not be found.
 
+# Configuration
+
+The daemon reads configuration from `/etc/user-identification-manager.conf`. A default configuration
+will be used if the file does not exist. Another path can be used by passing the `-c`/`--config`
+argument to the daemon.
+
+Content that corresponds to default configuration with comments explaining the variables:
+
+```
+[sources]
+# Comma separated list of sources to enable. Empty means all.
+enable=
+```
+
 # License and Copyright
 
 Copyright © 2019 Luxoft Sweden AB

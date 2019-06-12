@@ -15,6 +15,8 @@
 
 #define UIM_CONFIG_DAEMON_MAX_SAVED_IDENTIFIED_USERS 20
 
+#define UIM_CONFIG_DAEMON_DEFAULT_CONFIG_FILE "@sysconfdir@/user-identification-manager.conf"
+
 // clang-format on
 
 #endif // USER_IDENTIFICATION_MANAGER_CONFIG_H
