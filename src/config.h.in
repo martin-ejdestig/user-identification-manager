@@ -13,7 +13,7 @@
 // clang-format. No complex formatting in this file anyway.
 // clang-format off
 
-// TODO
+#define UIM_CONFIG_DAEMON_DEFAULT_CONFIG_FILE "@sysconfdir@/user-identification-manager.conf"
 
 // clang-format on
 

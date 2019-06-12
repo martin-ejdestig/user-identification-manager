@@ -15,6 +15,7 @@
 #include <cassert>
 #include <csignal>
 #include <cstddef>
+#include <utility>
 
 namespace UserIdentificationManager::Daemon
 {
@@ -31,6 +32,11 @@ namespace UserIdentificationManager::Daemon
             static_cast<Daemon *>(daemon)->reload_config();
             return G_SOURCE_CONTINUE;
         }
+    }
+
+    Daemon::Daemon(Configuration &&configuration)
+    {
+        apply_config(std::move(configuration));
     }
 
     Daemon::~Daemon()
@@ -57,8 +63,16 @@ namespace UserIdentificationManager::Daemon
         main_loop_->quit();
     }
 
-    void Daemon::reload_config() const
+    void Daemon::reload_config()
     {
+        apply_config(Configuration::from_file(configuration_.config_file));
+    }
+
+    void Daemon::apply_config(Configuration &&new_config)
+    {
+        configuration_ = std::move(new_config);
+
+        id_source_group_.enable(configuration_.sources_enable);
     }
 
     bool Daemon::register_signal_handlers()

@@ -14,6 +14,7 @@
 #include <memory>
 #include <string>
 
+#include "daemon/configuration.h"
 #include "daemon/dbus_service.h"
 #include "daemon/id_source.h"
 
@@ -22,7 +23,7 @@ namespace UserIdentificationManager::Daemon
     class Daemon
     {
     public:
-        Daemon() = default;
+        explicit Daemon(Configuration &&configuration);
         ~Daemon();
 
         Daemon(const Daemon &other) = delete;
@@ -33,11 +34,15 @@ namespace UserIdentificationManager::Daemon
         int run();
         void quit() const;
 
-        void reload_config() const;
+        void reload_config();
 
     private:
+        void apply_config(Configuration &&new_config);
+
         bool register_signal_handlers();
         void unregister_signal_handlers();
+
+        Configuration configuration_;
 
         Glib::RefPtr<Glib::MainLoop> main_loop_ = Glib::MainLoop::create();
 

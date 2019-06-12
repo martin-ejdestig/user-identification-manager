@@ -9,6 +9,8 @@ daemon_deps = [
 daemon_sources = [
     'arguments.cpp',
     'arguments.h',
+    'configuration.cpp',
+    'configuration.h',
     'daemon.cpp',
     'daemon.h',
     'dbus_service.cpp',
