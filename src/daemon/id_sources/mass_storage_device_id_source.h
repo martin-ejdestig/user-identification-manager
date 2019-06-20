@@ -13,6 +13,7 @@
 #include <glibmm.h>
 #include <sigc++/sigc++.h>
 
+#include <optional>
 #include <string>
 #include <unordered_map>
 
@@ -34,6 +35,8 @@ namespace UserIdentificationManager::Daemon
     class MassStorageDeviceIdSource : public IdSource, public sigc::trackable
     {
     public:
+        struct Parser;
+
         MassStorageDeviceIdSource();
 
         void enable() override;
@@ -52,13 +55,18 @@ namespace UserIdentificationManager::Daemon
                           const Glib::RefPtr<Gio::File> &other_file,
                           Gio::FileMonitorEvent event) const;
 
-        void read_file(const std::string &path) const;
+        void read_file_and_notify(const std::string &path) const;
 
         Glib::RefPtr<Gio::VolumeMonitor> volume_monitor_ = Gio::VolumeMonitor::get();
         sigc::connection mount_added_connection_;
         sigc::connection mount_removed_connection_;
 
         std::unordered_map<std::string, Glib::RefPtr<Gio::FileMonitor>> file_monitors_;
+    };
+
+    struct MassStorageDeviceIdSource::Parser
+    {
+        static std::optional<IdentifiedUser> read_file(const std::string &path);
     };
 }
 
