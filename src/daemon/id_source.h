@@ -25,9 +25,9 @@ namespace UserIdentificationManager::Daemon
     // disabled by default.
     //
     // IdSource::Listener can be set for an IdSource to listen for users being identified. Note that
-    // normally this interface should not be used directly. It is only exposed for making easier to
-    // write unit tests for sources. IdSource::Group is a listener and has a signal that is emitted
-    // when any of its sources identifies a user. See below.
+    // normally this interface should not be used directly. It is only exposed for making it easier
+    // to write unit tests for sources. IdSource::Group is a listener and has a signal that is
+    // emitted when any of its sources identifies a user. See below.
     //
     // IdSource::Group is the main interface through which the rest of the program should interact
     // with identification sources. It groups sources together and has methods for enabling and
