@@ -45,7 +45,7 @@ namespace UserIdentificationManager::Cli
             Glib::OptionEntry entry;
             entry.set_short_name('m');
             entry.set_long_name("monitor");
-            entry.set_description("Monitor for users to be identified");
+            entry.set_description("Monitor user identification events");
             main_group.add_entry(entry, arguments.monitor);
         }
 
