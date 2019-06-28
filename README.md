@@ -41,7 +41,7 @@ building. When the daemon starts it reads what sources to enable/disable from a
 
 Reads identification data from a file called `pelux-user-id` in the root of a mass storage device,
 e.g. a USB stick. Meant to be used for demonstration and testing purposes. The file must be formated
-as follows (replace <X> with actual values):
+as follows (replace &lt;X&gt; with actual values):
 
 ```
 ID <numeric string>
