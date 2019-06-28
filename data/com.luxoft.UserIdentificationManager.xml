@@ -20,7 +20,7 @@
     <!--
         GetIdentifiedUsers:
 
-        For debugging purposes, returns an array of the x:th most recent
+        For debugging purposes, returns an array of the (max 20) most recently
         identified users emitted by UserIdentified. Each element corresponds to
         user_identification_id and seat_id in UserIdentified.
 
