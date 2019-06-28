@@ -10,6 +10,10 @@
 
 #include <glibmm.h>
 
+#include <string>
+
+#include "config.h"
+
 namespace UserIdentificationManager::Cli
 {
     std::optional<Arguments> Arguments::parse(int argc, char *argv[], std::ostream &output)
@@ -27,9 +31,12 @@ namespace UserIdentificationManager::Cli
 
         {
             Glib::OptionEntry entry;
+            Glib::ustring description =
+                "Print users identified since start of daemon (max " +
+                std::to_string(UIM_CONFIG_DAEMON_MAX_SAVED_IDENTIFIED_USERS) + ")";
             entry.set_short_name('i');
             entry.set_long_name("identified-users");
-            entry.set_description("Print recently identified users");
+            entry.set_description(description);
             main_group.add_entry(entry, arguments.print_identified_users);
         }
 

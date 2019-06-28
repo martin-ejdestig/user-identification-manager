@@ -56,9 +56,9 @@ Help Options:
 
 Application Options:
   --version                  Print version and exit
-  -i, --identified-users     Print recently identified users
+  -i, --identified-users     Print users identified since start of daemon (max 20)
   -s, --sources              Print enabled and disabled identification sources
-  -m, --monitor              Monitor for users to be identified
+  -m, --monitor              Monitor user identification events
 ```
 
 # License and Copyright
