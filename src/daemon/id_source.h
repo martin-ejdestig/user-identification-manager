@@ -17,6 +17,8 @@
 #include <string>
 #include <vector>
 
+#include "config.h"
+
 namespace UserIdentificationManager::Daemon
 {
     // Identification source base class.
@@ -101,7 +103,8 @@ namespace UserIdentificationManager::Daemon
     public:
         using Sources = std::vector<std::unique_ptr<IdSource>>;
 
-        static constexpr unsigned int MAX_SAVED_IDENTIFIED_USERS = 20;
+        static constexpr unsigned int MAX_SAVED_IDENTIFIED_USERS =
+            UIM_CONFIG_DAEMON_MAX_SAVED_IDENTIFIED_USERS;
 
         Group();
         explicit Group(Sources &&sources);
