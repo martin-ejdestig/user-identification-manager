@@ -30,6 +30,24 @@ meson test -C build
 
 "No tests defined." is printed if the required version of googletest could not be found.
 
+# Identification Sources
+
+What sources to include in the daemon can be changed with [build options](meson_options.txt). For
+example, to disable the mass storage device source run `meson build -Dmsd_id_source=false` when
+building. When the daemon starts it reads what sources to enable/disable from a
+[configuration file](#Configuration). All sources included when building are enabled by default.
+
+## Mass Storage Device Source (MSD)
+
+Reads identification data from a file called `pelux-user-id` in the root of a mass storage device,
+e.g. a USB stick. Meant to be used for demonstration and testing purposes. The file must be formated
+as follows (replace <X> with actual values):
+
+```
+ID <numeric string>
+SEAT <hex value between 0x0 and 0xffff, must start with 0x>
+```
+
 # Configuration
 
 The daemon reads configuration from `/etc/user-identification-manager.conf`. A default configuration
