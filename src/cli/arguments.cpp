@@ -70,6 +70,12 @@ namespace UserIdentificationManager::Cli
             return {};
         }
 
+        if (!arguments.print_version_and_exit && !arguments.print_identified_users &&
+            !arguments.print_sources && !arguments.monitor) {
+            output << Glib::get_prgname() << ": missing option\n";
+            return {};
+        }
+
         return arguments;
     }
 }

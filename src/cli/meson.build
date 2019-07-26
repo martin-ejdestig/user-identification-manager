@@ -18,3 +18,5 @@ executable('uimcli',
     include_directories : private_include_dir,
     sources : cli_sources,
     install : true)
+
+subdir('unit_tests')
