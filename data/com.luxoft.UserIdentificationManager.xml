@@ -8,6 +8,10 @@
 
         Sent when a user has been identified and assigned to a seat.
 
+        @seat_id identifies a seat. 0 maps to main user/driver and 0xffff means
+        undefined/not applicable. 0 and 0xffff are reserved for all products.
+        For all other numbers the meaning may differ between products.
+
         Example:
            user_identification_id = "KEYFOB-01-DE-02-AD"
            seat_id = 0
