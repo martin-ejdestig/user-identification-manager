@@ -6,8 +6,8 @@
 //
 // SPDX-License-Identifier: MPL-2.0
 
-#ifndef USER_IDENTIFICATION_MANAGER_COMMON_DBUS_H
-#define USER_IDENTIFICATION_MANAGER_COMMON_DBUS_H
+#ifndef UIM_COMMON_DBUS_H
+#define UIM_COMMON_DBUS_H
 
 namespace UserIdentificationManager::Common
 {
@@ -19,4 +19,4 @@ namespace UserIdentificationManager::Common
     };
 }
 
-#endif // USER_IDENTIFICATION_MANAGER_COMMON_DBUS_H
+#endif // UIM_COMMON_DBUS_H

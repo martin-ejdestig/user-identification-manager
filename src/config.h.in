@@ -6,8 +6,8 @@
 //
 // SPDX-License-Identifier: MPL-2.0
 
-#ifndef USER_IDENTIFICATION_MANAGER_CONFIG_H
-#define USER_IDENTIFICATION_MANAGER_CONFIG_H
+#ifndef UIM_CONFIG_H
+#define UIM_CONFIG_H
 
 // Disable formatting since @ can be used in *.in files and it confuses
 // clang-format. No complex formatting in this file anyway.
@@ -21,4 +21,4 @@
 
 // clang-format on
 
-#endif // USER_IDENTIFICATION_MANAGER_CONFIG_H
+#endif // UIM_CONFIG_H

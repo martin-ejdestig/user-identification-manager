@@ -6,8 +6,8 @@
 //
 // SPDX-License-Identifier: MPL-2.0
 
-#ifndef USER_IDENTIFICATION_MANAGER_DAEMON_DBUS_SERVICE_H
-#define USER_IDENTIFICATION_MANAGER_DAEMON_DBUS_SERVICE_H
+#ifndef UIM_DAEMON_DBUS_SERVICE_H
+#define UIM_DAEMON_DBUS_SERVICE_H
 
 #include <glibmm.h>
 #include <sigc++/sigc++.h>
@@ -66,4 +66,4 @@ namespace UserIdentificationManager::Daemon
     };
 }
 
-#endif // USER_IDENTIFICATION_MANAGER_DAEMON_DBUS_SERVICE_H
+#endif // UIM_DAEMON_DBUS_SERVICE_H

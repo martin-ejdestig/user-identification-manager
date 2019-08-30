@@ -6,12 +6,12 @@
 //
 // SPDX-License-Identifier: MPL-2.0
 
-#ifndef USER_IDENTIFICATION_MANAGER_COMMON_VERSION_H
-#define USER_IDENTIFICATION_MANAGER_COMMON_VERSION_H
+#ifndef UIM_COMMON_VERSION_H
+#define UIM_COMMON_VERSION_H
 
 namespace UserIdentificationManager::Common
 {
     static constexpr char VERSION[] = "@VCS_TAG@";
 }
 
-#endif // USER_IDENTIFICATION_MANAGER_COMMON_VERSION_H
+#endif // UIM_COMMON_VERSION_H
