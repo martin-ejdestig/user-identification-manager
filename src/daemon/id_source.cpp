@@ -14,7 +14,9 @@
 #include <utility>
 
 #include "config.h"
-#include "daemon/id_sources/mass_storage_device_id_source.h"
+#if UIM_CONFIG_MASS_STORAGE_DEVICE_ID_SOURCE
+#    include "daemon/id_sources/mass_storage_device_id_source.h"
+#endif
 
 namespace UserIdentificationManager::Daemon
 {
