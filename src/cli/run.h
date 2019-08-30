@@ -6,8 +6,8 @@
 //
 // SPDX-License-Identifier: MPL-2.0
 
-#ifndef USER_IDENTIFICATION_MANAGER_CLI_RUN_H
-#define USER_IDENTIFICATION_MANAGER_CLI_RUN_H
+#ifndef UIM_CLI_RUN_H
+#define UIM_CLI_RUN_H
 
 #include <glibmm.h>
 
@@ -20,4 +20,4 @@ namespace UserIdentificationManager::Cli
             const Arguments &arguments);
 }
 
-#endif // USER_IDENTIFICATION_MANAGER_CLI_RUN_H
+#endif // UIM_CLI_RUN_H

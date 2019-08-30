@@ -6,8 +6,8 @@
 //
 // SPDX-License-Identifier: MPL-2.0
 
-#ifndef USER_IDENTIFICATION_MANAGER_CLI_ARGUMENTS_H
-#define USER_IDENTIFICATION_MANAGER_CLI_ARGUMENTS_H
+#ifndef UIM_CLI_ARGUMENTS_H
+#define UIM_CLI_ARGUMENTS_H
 
 #include <optional>
 #include <ostream>
@@ -27,4 +27,4 @@ namespace UserIdentificationManager::Cli
     };
 }
 
-#endif // USER_IDENTIFICATION_MANAGER_CLI_ARGUMENTS_H
+#endif // UIM_CLI_ARGUMENTS_H

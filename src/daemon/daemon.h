@@ -6,8 +6,8 @@
 //
 // SPDX-License-Identifier: MPL-2.0
 
-#ifndef USER_IDENTIFICATION_MANAGER_DAEMON_DAEMON_H
-#define USER_IDENTIFICATION_MANAGER_DAEMON_DAEMON_H
+#ifndef UIM_DAEMON_DAEMON_H
+#define UIM_DAEMON_DAEMON_H
 
 #include <glibmm.h>
 
@@ -56,4 +56,4 @@ namespace UserIdentificationManager::Daemon
     };
 }
 
-#endif // USER_IDENTIFICATION_MANAGER_DAEMON_DAEMON_H
+#endif // UIM_DAEMON_DAEMON_H
