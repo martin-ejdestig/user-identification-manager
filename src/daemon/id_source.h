@@ -92,7 +92,7 @@ namespace UserIdentificationManager::Daemon
     struct IdSource::IdentifiedUser
     {
         std::string user_identification_id;
-        SeatId seat_id = 0;
+        SeatId seat_id = SEAT_ID_UNDEFINED;
     };
 
     class IdSource::Listener
