@@ -2,3 +2,8 @@ option('msd_id_source',
        type : 'boolean',
        value : true,
        description : 'Include mass storage device ID source.')
+
+option('scard_id_source',
+       type : 'boolean',
+       value : true,
+       description : 'Include smart card ID source.')

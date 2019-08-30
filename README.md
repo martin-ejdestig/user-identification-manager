@@ -10,6 +10,7 @@ A D-Bus signal, `UserIdentified`, is emitted when a user is identified. See the
 - gdbus-codgen-glibmm
 - glibmm (2.56)
 - googletest (1.8.1, for tests, optional)
+- pcsc-lite (1.8.22, if built with smart card, SCARD, id source)
 
 # Building
 
@@ -47,6 +48,11 @@ as follows (replace &lt;X&gt; with actual values):
 ID <numeric string>
 SEAT <hex value between 0x0 and 0xffff, must start with 0x>
 ```
+
+## Smart Card Source (SCARD)
+
+Extract identification from smart cards. Currently only extracts the UID (unique identifier) from
+contactless smarts cards that is then used as a means to identify a user.
 
 # Configuration
 
