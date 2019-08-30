@@ -7,7 +7,8 @@ daemon_unit_tests_sources = [
     'arguments_test.cpp',
     'configuration_test.cpp',
     'id_source_test.cpp',
-    'id_sources/mass_storage_device_id_source_test.cpp'
+    'id_sources/mass_storage_device_id_source_test.cpp',
+    'idle_queue_test.cpp'
 ]
 
 daemon_unit_tests = executable('daemon-unit_tests',

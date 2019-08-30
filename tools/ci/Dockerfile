@@ -13,6 +13,7 @@ RUN apt-get update && \
         gcc \
         git \
         libglibmm-2.4-dev \
+        libpcsclite-dev \
         locales \
         meson \
         python \

@@ -10,7 +10,11 @@ giomm_dep = dependency('giomm-2.4', version : '>=2.56')
 glib_dep = dependency('glib-2.0', version : '>=2.56')
 glibmm_dep = dependency('glibmm-2.4', version : '>=2.56')
 gtest_main_dep = dependency('gtest', main : true, required : false, version : '>=1.8.1')
+if get_option('scard_id_source')
+    libpcsclite_dep = dependency('libpcsclite', version : '>=1.8.22')
+endif
 systemd_dep = dependency('systemd')
+threads_dep = dependency('threads')
 
 if not gtest_main_dep.found()
     gtest_main_dep = disabler()

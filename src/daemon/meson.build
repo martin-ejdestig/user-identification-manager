@@ -3,6 +3,7 @@ daemon_deps = [
     giomm_dep,
     glib_dep,
     glibmm_dep,
+    threads_dep,
     uim_dbus_dep
 ]
 
@@ -18,8 +19,19 @@ daemon_sources = [
     'id_source.cpp',
     'id_source.h',
     'id_sources/mass_storage_device_id_source.cpp',
-    'id_sources/mass_storage_device_id_source.h'
+    'id_sources/mass_storage_device_id_source.h',
+    'idle_queue.h'
 ]
+
+if get_option('scard_id_source')
+    daemon_deps += libpcsclite_dep
+    daemon_sources += [
+        'pcsc_context.cpp',
+        'pcsc_context.h',
+        'id_sources/smart_card_id_source.cpp',
+        'id_sources/smart_card_id_source.h'
+    ]
+endif
 
 daemon_main_sources = [
     'main.cpp',
