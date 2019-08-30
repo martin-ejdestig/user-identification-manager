@@ -44,6 +44,11 @@ namespace UserIdentificationManager::Daemon
 
         using SeatId = std::uint16_t;
 
+        static constexpr SeatId SEAT_ID_MIN = 0;
+        static constexpr SeatId SEAT_ID_MAX = 0xffff;
+        static constexpr SeatId SEAT_ID_MAIN_USER = 0x0000;
+        static constexpr SeatId SEAT_ID_UNDEFINED = 0xffff;
+
         explicit IdSource(const std::string &name);
         virtual ~IdSource();
 

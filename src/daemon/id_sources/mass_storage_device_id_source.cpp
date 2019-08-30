@@ -189,8 +189,6 @@ namespace UserIdentificationManager::Daemon
         }
 
         constexpr unsigned int SEAT_ID_BASE = 16;
-        constexpr unsigned int SEAT_ID_MIN = 0;
-        constexpr unsigned int SEAT_ID_MAX = 0xffff;
         const std::string seat_id_hex_prefix = "0x";
         guint64 seat_id = 0;
 
