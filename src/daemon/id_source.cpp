@@ -49,8 +49,9 @@ namespace UserIdentificationManager::Daemon
 
     void IdSource::user_identified(const IdentifiedUser &identified_user) const
     {
-        if (listener_)
+        if (listener_) {
             listener_->user_identified(identified_user);
+        }
     }
 
     IdSource::Group::Group() : Group(create_sources())
@@ -59,17 +60,20 @@ namespace UserIdentificationManager::Daemon
 
     IdSource::Group::Group(Sources &&sources) : sources_(std::move(sources))
     {
-        for (auto &source : sources_)
+        for (auto &source : sources_) {
             source->set_listener(this);
+        }
     }
 
     std::vector<std::string> IdSource::Group::enabled_names() const
     {
         std::vector<std::string> names;
 
-        for (auto &source : sources_)
-            if (source->enabled())
+        for (auto &source : sources_) {
+            if (source->enabled()) {
                 names.emplace_back(source->name());
+            }
+        }
 
         return names;
     }
@@ -78,23 +82,27 @@ namespace UserIdentificationManager::Daemon
     {
         std::vector<std::string> names;
 
-        for (auto &source : sources_)
-            if (!source->enabled())
+        for (auto &source : sources_) {
+            if (!source->enabled()) {
                 names.emplace_back(source->name());
+            }
+        }
 
         return names;
     }
 
     void IdSource::Group::enable_all() const
     {
-        for (auto &source : sources_)
+        for (auto &source : sources_) {
             source->enable();
+        }
     }
 
     void IdSource::Group::disable_all() const
     {
-        for (auto &source : sources_)
+        for (auto &source : sources_) {
             source->disable();
+        }
     }
 
     void IdSource::Group::enable(const std::vector<std::string> &names) const
@@ -109,10 +117,11 @@ namespace UserIdentificationManager::Daemon
         for (const std::string &name : names) {
             IdSource *source = find_source(name);
 
-            if (source)
+            if (source) {
                 source->enable();
-            else
+            } else {
                 g_warning("Can not enable \"%s\", unknown source", name.c_str());
+            }
         }
     }
 
@@ -127,8 +136,9 @@ namespace UserIdentificationManager::Daemon
                   identified_user.user_identification_id.c_str(),
                   identified_user.seat_id);
 
-        if (identified_users_.size() >= MAX_SAVED_IDENTIFIED_USERS)
+        if (identified_users_.size() >= MAX_SAVED_IDENTIFIED_USERS) {
             identified_users_.pop_front();
+        }
 
         identified_users_.push_back(identified_user);
 
@@ -137,10 +147,11 @@ namespace UserIdentificationManager::Daemon
 
     IdSource *IdSource::Group::find_source(const std::string &name) const
     {
-        for (auto &source : sources_)
-            if (g_ascii_strcasecmp(source->name().c_str(), name.c_str()) == 0)
+        for (auto &source : sources_) {
+            if (g_ascii_strcasecmp(source->name().c_str(), name.c_str()) == 0) {
                 return source.get();
-
+            }
+        }
         return nullptr;
     }
 }

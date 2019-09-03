@@ -20,8 +20,9 @@ namespace
     {
         g_autofree char *path = nullptr;
         int fd = g_file_open_tmp(nullptr, &path, nullptr);
-        if (fd == -1)
+        if (fd == -1) {
             throw std::runtime_error("Failed to create temporary file");
+        }
 
         ssize_t bytes_written = write(fd, content.data(), content.size());
         close(fd);
@@ -43,7 +44,8 @@ namespace UserIdentificationManager::Common
 
     ScopedTempFile::~ScopedTempFile()
     {
-        if (!path_.empty())
+        if (!path_.empty()) {
             remove(path_.c_str());
+        }
     }
 }

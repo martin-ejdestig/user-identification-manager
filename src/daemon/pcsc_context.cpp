@@ -188,9 +188,9 @@ namespace UserIdentificationManager::Daemon
             //       - "3.1.3.2.3.2  Contactless Storage Cards" in
             //         https://muscle.apdu.fr/www.pcscworkgroup.com/PCSC/V2/pcsc3_v2.01.09.pdf .
             //       - https://en.wikipedia.org/wiki/Answer_to_reset
-            if (state.cbAtr > 5)
+            if (state.cbAtr > 5) {
                 return state.rgbAtr[5] == 0x4f;
-
+            }
             return false;
         }
 

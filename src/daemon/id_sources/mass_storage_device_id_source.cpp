@@ -30,16 +30,18 @@ namespace UserIdentificationManager::Daemon
         {
             std::ifstream stream(path);
 
-            if (!stream.is_open())
+            if (!stream.is_open()) {
                 return {};
+            }
 
             std::vector<std::string> lines;
 
             for (unsigned int i = 0; i < num_lines; i++) {
                 std::string line;
 
-                if (!std::getline(stream, line))
+                if (!std::getline(stream, line)) {
                     return {};
+                }
 
                 lines.emplace_back(std::move(line));
             }
@@ -54,10 +56,11 @@ namespace UserIdentificationManager::Daemon
 
         bool string_is_numeric(const std::string &str)
         {
-            for (char c : str)
-                if (c < '0' || c > '9')
+            for (char c : str) {
+                if (c < '0' || c > '9') {
                     return false;
-
+                }
+            }
             return true;
         }
     }
@@ -69,8 +72,9 @@ namespace UserIdentificationManager::Daemon
 
     void MassStorageDeviceIdSource::enable()
     {
-        if (enabled())
+        if (enabled()) {
             return;
+        }
 
         set_enabled(true);
 
@@ -85,8 +89,9 @@ namespace UserIdentificationManager::Daemon
 
     void MassStorageDeviceIdSource::disable()
     {
-        if (!enabled())
+        if (!enabled()) {
             return;
+        }
 
         file_monitors_.clear();
 
@@ -100,16 +105,18 @@ namespace UserIdentificationManager::Daemon
     {
         std::vector<Glib::RefPtr<Gio::Mount>> mounts = volume_monitor_->get_mounts();
 
-        for (auto &mount : mounts)
+        for (auto &mount : mounts) {
             mount_added(mount);
+        }
     }
 
     void MassStorageDeviceIdSource::mount_added(const Glib::RefPtr<Gio::Mount> &mount)
     {
         Glib::RefPtr<Gio::File> file = mount->get_root()->get_child(USER_ID_FILE_NAME);
 
-        if (!file->query_exists())
+        if (!file->query_exists()) {
             return;
+        }
 
         start_monitoring_file(file);
         read_file_and_notify(file->get_path());
@@ -141,16 +148,18 @@ namespace UserIdentificationManager::Daemon
                                                  const Glib::RefPtr<Gio::File> & /*other_file*/,
                                                  Gio::FileMonitorEvent event) const
     {
-        if (event == Gio::FILE_MONITOR_EVENT_CHANGES_DONE_HINT)
+        if (event == Gio::FILE_MONITOR_EVENT_CHANGES_DONE_HINT) {
             read_file_and_notify(file->get_path());
+        }
     }
 
     void MassStorageDeviceIdSource::read_file_and_notify(const std::string &path) const
     {
         std::optional<IdentifiedUser> identified_user = Parser::read_file(path);
 
-        if (!identified_user)
+        if (!identified_user) {
             return;
+        }
 
         user_identified(*identified_user);
     }

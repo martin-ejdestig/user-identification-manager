@@ -130,8 +130,9 @@ namespace UserIdentificationManager::Daemon
                                 users1[i],
                                 users2[i]);
 
-                if (!result)
+                if (!result) {
                     return result;
+                }
             }
 
             return testing::AssertionSuccess();

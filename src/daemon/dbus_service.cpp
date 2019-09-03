@@ -33,8 +33,9 @@ namespace UserIdentificationManager::Daemon
 
     void DBusService::own_name()
     {
-        if (connection_id_ != 0)
+        if (connection_id_ != 0) {
             return;
+        }
 
         connection_id_ = Gio::DBus::own_name(Gio::DBus::BUS_TYPE_SYSTEM,
                                              Common::DBus::MANAGER_SERVICE_NAME,
@@ -45,8 +46,9 @@ namespace UserIdentificationManager::Daemon
 
     void DBusService::unown_name()
     {
-        if (connection_id_ == 0)
+        if (connection_id_ == 0) {
             return;
+        }
 
         manager_.stop_listening_for_user_identified();
 
@@ -57,8 +59,9 @@ namespace UserIdentificationManager::Daemon
     void DBusService::bus_acquired(const Glib::RefPtr<Gio::DBus::Connection> &connection,
                                    const Glib::ustring & /*name*/)
     {
-        if (manager_.register_object(connection, Common::DBus::MANAGER_OBJECT_PATH) == 0)
+        if (manager_.register_object(connection, Common::DBus::MANAGER_OBJECT_PATH) == 0) {
             main_loop_->quit();
+        }
 
         manager_.start_listening_for_user_identified();
     }
@@ -101,8 +104,9 @@ namespace UserIdentificationManager::Daemon
     {
         std::vector<std::tuple<Glib::ustring, guint16>> result;
 
-        for (const IdSource::IdentifiedUser &user : id_source_group_.identified_users())
+        for (const IdSource::IdentifiedUser &user : id_source_group_.identified_users()) {
             result.emplace_back(user.user_identification_id, user.seat_id);
+        }
 
         invocation.ret(result);
     }
@@ -112,11 +116,13 @@ namespace UserIdentificationManager::Daemon
         std::vector<Glib::ustring> enabled;
         std::vector<Glib::ustring> disabled;
 
-        for (const std::string &name : id_source_group_.enabled_names())
+        for (const std::string &name : id_source_group_.enabled_names()) {
             enabled.emplace_back(name);
+        }
 
-        for (const std::string &name : id_source_group_.disabled_names())
+        for (const std::string &name : id_source_group_.disabled_names()) {
             disabled.emplace_back(name);
+        }
 
         invocation.ret(enabled, disabled);
     }

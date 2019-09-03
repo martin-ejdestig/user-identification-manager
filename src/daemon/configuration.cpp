@@ -47,8 +47,9 @@ namespace UserIdentificationManager::Daemon
         } catch (const Glib::Error &e) {
             bool file_does_not_exist = e.matches(G_FILE_ERROR, Glib::FileError::NO_SUCH_ENTITY);
 
-            if (!file_does_not_exist)
+            if (!file_does_not_exist) {
                 g_warning("Failed to load %s: %s", file_name.c_str(), e.what().c_str());
+            }
 
             return config;
         }

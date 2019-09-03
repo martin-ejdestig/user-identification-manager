@@ -82,8 +82,9 @@ namespace UserIdentificationManager::Cli
             if (enabled_sources.empty()) {
                 std::cout << "  None\n";
             } else {
-                for (const Glib::ustring &source : enabled_sources)
+                for (const Glib::ustring &source : enabled_sources) {
                     std::cout << "  " << source << '\n';
+                }
             }
 
             std::cout << "Disabled sources:\n";
@@ -91,8 +92,9 @@ namespace UserIdentificationManager::Cli
             if (disabled_sources.empty()) {
                 std::cout << "  None\n";
             } else {
-                for (const Glib::ustring &source : disabled_sources)
+                for (const Glib::ustring &source : disabled_sources) {
                     std::cout << "  " << source << '\n';
+                }
             }
 
             return true;
@@ -125,17 +127,23 @@ namespace UserIdentificationManager::Cli
 
     int run(const Glib::RefPtr<ManagerProxy> &manager_proxy, const Arguments &arguments)
     {
-        if (arguments.print_identified_users)
-            if (!print_identified_users(manager_proxy))
+        if (arguments.print_identified_users) {
+            if (!print_identified_users(manager_proxy)) {
                 return EXIT_FAILURE;
+            }
+        }
 
-        if (arguments.print_sources)
-            if (!print_sources(manager_proxy))
+        if (arguments.print_sources) {
+            if (!print_sources(manager_proxy)) {
                 return EXIT_FAILURE;
+            }
+        }
 
-        if (arguments.monitor)
-            if (!monitor_until_ctrl_c(manager_proxy))
+        if (arguments.monitor) {
+            if (!monitor_until_ctrl_c(manager_proxy)) {
                 return EXIT_FAILURE;
+            }
+        }
 
         return EXIT_SUCCESS;
     }
