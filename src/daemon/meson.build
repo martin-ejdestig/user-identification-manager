@@ -20,7 +20,9 @@ daemon_sources = [
     'id_source.h',
     'id_sources/mass_storage_device_id_source.cpp',
     'id_sources/mass_storage_device_id_source.h',
-    'idle_queue.h'
+    'idle_queue.h',
+    'string.cpp',
+    'string.h'
 ]
 
 if get_option('scard_id_source')

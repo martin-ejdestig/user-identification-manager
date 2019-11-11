@@ -8,34 +8,16 @@
 
 #include "daemon/id_sources/smart_card_id_source.h"
 
-#include <cstdint>
 #include <string>
-#include <vector>
 
 #include "daemon/pcsc_context.h"
+#include "daemon/string.h"
 
 namespace UserIdentificationManager::Daemon
 {
     namespace
     {
         constexpr char SMART_CARD_SOURCE_NAME[] = "SCARD";
-
-        char nibble_to_char(std::uint8_t nibble)
-        {
-            return nibble < 10 ? char(nibble + '0') : char(nibble - 10 + 'a');
-        }
-
-        std::string uid_to_string(const std::vector<std::uint8_t> &uid)
-        {
-            std::string ret;
-
-            for (std::uint8_t byte : uid) {
-                ret += nibble_to_char(byte >> 4);
-                ret += nibble_to_char(byte & 0x0f);
-            }
-
-            return ret;
-        }
     }
 
     SmartCardIdSource::SmartCardIdSource() : IdSource(SMART_CARD_SOURCE_NAME)
@@ -62,7 +44,7 @@ namespace UserIdentificationManager::Daemon
         IdentifiedUser identified_user;
 
         identified_user.user_identification_id =
-            std::string(SMART_CARD_SOURCE_NAME) + "-" + uid_to_string(extracted_uid.uid);
+            std::string(SMART_CARD_SOURCE_NAME) + "-" + string_hex_data(extracted_uid.uid);
 
         // TODO: Make mapping to seat id dependant on extracted_uid.reader_name? If mapping is
         //       stored in Configuration, it probably should be, then Daemon::apply_config() needs

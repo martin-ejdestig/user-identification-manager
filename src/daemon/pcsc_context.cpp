@@ -21,6 +21,8 @@
 #include <utility>
 #include <vector>
 
+#include "daemon/string.h"
+
 namespace UserIdentificationManager::Daemon
 {
     namespace
@@ -117,19 +119,6 @@ namespace UserIdentificationManager::Daemon
         constexpr char NOTIFICATION_READER_NAME[] = R"(\\?PnP?\Notification)";
         constexpr unsigned int NOTIFICATION_STATE_INDEX = 0;
 
-        std::vector<std::string> multi_string_split(const char *multi_string)
-        {
-            std::vector<std::string> strings;
-            const char *pos = multi_string;
-
-            while (*pos) {
-                strings.emplace_back(pos);
-                pos += strings.back().size() + 1;
-            }
-
-            return strings;
-        }
-
         std::vector<std::string> list_readers(SCARDCONTEXT context)
         {
             // Querying buffer size and then filling buffer with two calls to SCardListReaders() is
@@ -137,7 +126,7 @@ namespace UserIdentificationManager::Daemon
             // if first call reports X readers and next call reports X+1 readers due to buffer being
             // too small. The X+1:th reader will never be noticed. Have seen this happen so use
             // SCARD_AUTOALLOCATE even though it requires ugly casting of buffer argument and is not
-            // exception safe (if multi_string_split() OOM:s we want to terminate anyway).
+            // exception safe (if string_multi_string_split() OOM:s we want to terminate anyway).
             char *readers_multi_string;
             auto readers_multi_string_size = static_cast<DWORD>(SCARD_AUTOALLOCATE);
             LONG ret;
@@ -156,7 +145,7 @@ namespace UserIdentificationManager::Daemon
                 return {};
             }
 
-            std::vector<std::string> readers = multi_string_split(readers_multi_string);
+            std::vector<std::string> readers = string_split_multi_string(readers_multi_string);
 
             SCardFreeMemory(context, readers_multi_string);
 
