@@ -7,7 +7,7 @@ A D-Bus signal, `UserIdentified`, is emitted when a user is identified. See the
 
 # Dependencies
 
-- gdbus-codegen-glibmm
+- [gdbus-codegen-glibmm](https://github.com/Pelagicore/gdbus-codegen-glibmm)
 - glibmm (2.56)
 - googletest (1.8.1, for tests, optional)
 - pcsc-lite (1.8.22, if built with smart card, SCARD, id source)
