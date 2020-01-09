@@ -105,7 +105,7 @@ Smart Card Source (SCARD)
 -------------------------
 
 Extract identification from smart cards. Currently only extracts the UID (unique identifier) from
-contactless smarts cards that is then used as a means to identify a user.
+contactless smart cards that is then used as a means to identify a user.
 
 Configuration
 =============
